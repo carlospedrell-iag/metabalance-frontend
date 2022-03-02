@@ -1,17 +1,25 @@
 <template>
-
-  <router-view/>
+  <header-component v-if="$route.path!=='/login' && $route.path!=='/register'"/>
+  <div class="app">
+    <router-view />
+    
+  </div>
+  <navigation-component v-if="$route.path!=='/login' && $route.path!=='/register'"/>
 </template>
 
 <script>
 import { onBeforeMount } from 'vue';
 import {useRouter, useRoute } from 'vue-router';
 import firebase from 'firebase/compat/app';
+import NavigationComponent from './components/NavigationComponent.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
+
 
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
+
 
     onBeforeMount(() => {
       firebase.auth().onAuthStateChanged((user) => {
@@ -22,22 +30,44 @@ export default {
         }
       });
     });
+  },
+  components: {
+    NavigationComponent,
+    HeaderComponent
+  },
+  data() {
+    return {
+      num: 0
+    }
   }
 }
 </script>
 
 <style lang="scss">
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 
-  background: #ffffff;
+body {
+  margin: 0;
+  background: white;
   color: rgb(29, 29, 29);
-  position: sticky;
+  height: 100%;
+  width: 100%;
+
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   text-align: center;
+}
+
+div.app{
+    width:100%;
+    height:100%;
+  background: white;
+  padding-top: 4em;
+  padding-bottom: 4em;
 }
 
 /* Style inputs */
@@ -83,8 +113,6 @@ a {
 }
 
 @media (max-width : 500px) {
-    body {
-      position: fixed;
-    }
+
 }
 </style>

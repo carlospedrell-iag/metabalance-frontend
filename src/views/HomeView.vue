@@ -1,10 +1,10 @@
 <template>
-<br><br><br>
-<h1>Welcome, {{ name }}</h1>
+
+<h2>Welcome to Metabalance</h2>
+
   <div class="home">
-    
-    <router-link to="/about">About</router-link>
-    <button class="logout" @click="Logout">Logout</button>
+
+  <button class="logout" @click="Logout">Logout</button>
   </div>
 </template>
 
