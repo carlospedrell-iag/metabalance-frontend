@@ -2,15 +2,19 @@
 
 <h2>Welcome to Metabalance</h2>
 
-  <div class="home">
 
+
+  <product-list/>
   <button class="logout" @click="Logout">Logout</button>
-  </div>
 </template>
 
 <script>
+
 import { ref, onBeforeMount } from 'vue';
+
 import firebase from 'firebase/compat/app';
+
+import ProductList from '../components/ProductList.vue';
 
 export default {
   setup() {
@@ -36,6 +40,9 @@ export default {
       name,
       Logout
     }
+  },
+  components : {
+    ProductList
   }
 }
 </script>
