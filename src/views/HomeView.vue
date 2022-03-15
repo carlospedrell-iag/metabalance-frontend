@@ -1,7 +1,7 @@
 <template>
 
 <h2>Welcome to Metabalance</h2>
-
+   
 
 
   <product-list/>
@@ -46,3 +46,20 @@ export default {
   }
 }
 </script>
+
+<style>
+
+button.logout{
+
+  position: relative;
+  background-color: #558fc5;
+  border: none;
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  top: 0;
+
+}
+
+</style>

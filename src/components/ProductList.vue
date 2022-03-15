@@ -1,17 +1,31 @@
 <template>
-  <div><h4>Product List</h4></div>
-
-  <ul>
-    <li v-for="product in productList" :key="product">{{product.name}}  --  Calories: {{product.calories}}</li>
-  </ul>
-
-  <div class="add-product">
-		<form @submit.prevent="addProduct">
+	<div><h4>Add a new product</h4></div>
+	<div class="add-product">
+		<form @submit="addCustomProduct">
 			<input type="text" placeholder="Name" v-model="productName"/>
-			<input type="text" placeholder="Calories" v-model="productCalories" />
-			<input type="submit" value="addProduct">
+			<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
+			<input type="submit" value="Add Product">
 		</form>
 	</div>
+
+	<div class="add-product">
+		<form @submit="addProductByISBN">
+			<input type="text" placeholder="ISBN" v-model="productISBN"/>
+			<input type="submit" value="Add Product by ISBN">
+		</form>
+	</div>
+	<div class="line"></div>
+	<div><h4>Product List</h4></div>
+	<ul>
+	<li v-for="product in productList" :key="product" class="product">
+		<div class="product-info">
+			<p class="name">{{product.name}}</p>
+			<p class="calories">{{product.calories}} Calories per 100g</p>
+		</div>
+		<img class="food" :src="product.image" alt="product">
+	</li>
+	</ul>
+
 </template>
 
 <script>
@@ -30,7 +44,7 @@ const firebaseConfig = {
 	messagingSenderId: "972862324822",
 	appId: "1:972862324822:web:719cd91f83f36addd27bf7",
 	measurementId: "G-VW02Q6T63P"
-  };
+	};
 
 
 firebase.initializeApp(firebaseConfig);
@@ -45,73 +59,232 @@ const dbRef = ref(db);
 let productList = ["AAS"];
 
 get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
-  if (snapshot.exists()) {
-    console.log(snapshot.val());
-    productList = snapshot.val()
-  } else {
-    console.log("No data available");
-    productList = ["no","noo"]
-  }
+	if (snapshot.exists()) {
+		console.log(snapshot.val());
+		productList = snapshot.val()
+	} else {
+		console.log("No data available");
+		productList = ["no","noo"]
+	}
 }).catch((error) => {
-  console.error(error);
+	console.error(error);
 });
 
 
 
+
 export default {
-    data() {
-        return {
-            productList
-        };
-    },
-    created() {
-      const db = getDatabase();
-      const dbRef = ref(db);
-      get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          console.log(snapshot.val());
-          this.productList = snapshot.val()
-        } else {
-          console.log("No data available");
-          this.productList = ["no","noo"]
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
-    },
-    setup() {
-      const productName = vueRef("");
-      const productCalories = vueRef("");
-
-      const addProduct = () => {
-        console.log(productName.value);
-        console.log(productCalories.value);
+	data() {
+			return {
+					productList
+			};
+	},
+	created() {
+		const db = getDatabase();
+		const dbRef = ref(db);
+		
+		get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+			if (snapshot.exists()) {
+				console.log(snapshot.val());
+				this.productList = snapshot.val()
+			} else {
+				console.log("No data available");
+				this.productList = ["no","noo"]
+			}
+		}).catch((error) => {
+			console.error(error);
+		});
 
 
-        const db = getDatabase();
-        push(ref(db, 'users/carlos/products/'), {
-          name: productName.value,
-          calories: productCalories.value
-        });
+		
 
 
-        
-      }
+	},
+	setup() {
+		const productName = vueRef("");
+		const productCalories = vueRef("");
+		const productISBN = vueRef("");
 
-      return {
-        addProduct,
-        productName,
-        productCalories
-		  }
-    }
+		function changeFile(e){
+			const name = e.target.name,
+					file = e.target.files[0]
+			const hasName = ['file', 'logo','headerImg'].includes(name)
+			if(hasName && file) this[name] = file
+			else console.log('error')
+		}
+
+
+		function extractBarcode(){
+			var Quagga = require('quagga');
+
+			Quagga.decodeSingle({
+				src: require("@/assets/logo.png"),
+				numOfWorkers: 0,  // Needs to be 0 when used within node
+				inputStream: {
+					size: 800  // restrict input-size to be 800px in width (long-side)
+				},
+				decoder: {
+					readers: ["ean_reader"] // List of active readers
+				},
+			}, function(result) {
+				if(result.codeResult) {
+					console.log("result", result.codeResult.code);
+					return result.codeResult.code;
+				} else {
+					console.log("not detected");
+					return 1230;
+				}
+			});
+		}
+
+		function processFoodAPI(result){
+			console.log(result)
+			let data = JSON.parse(result)
+			let product = {}
+
+			product["name"] = data["product"]["product_name"];
+			if (product["name"] == ""){
+				product["name"] = data["product"]["product_name_es"];
+			}
+			product["calories"] = data['product']['nutriments']['energy-kcal_100g'];
+			product["image"] = data['product']['image_front_url']
+			console.log(data["product"]["product_name"])
+			console.log(data['product']['nutriments']['energy-kcal_100g'])
+			console.log(data['product']['image_front_url'])
+
+			const db = getDatabase();
+			push(ref(db, 'users/carlos/products/'), product);
+
+		}
+
+		const addCustomProduct = () => {
+			console.log(productName.value);
+			console.log(productCalories.value);
+
+
+			const db = getDatabase();
+			push(ref(db, 'users/carlos/products/'), {
+				name: productName.value,
+				calories: productCalories.value,
+				image: "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg"
+			});
+
+		}
+
+		const addProductByISBN = () => {
+			console.log(productISBN.value);
+
+			var requestOptions = {
+				method: 'GET',
+				redirect: 'follow'
+			};
+
+			fetch("https://world.openfoodfacts.org/api/v0/product/" + productISBN.value + ".json", requestOptions)
+			.then(response => response.text())
+			.then(result => processFoodAPI(result))
+			.catch(error => console.log('error', error));
+
+			/*
+			const db = getDatabase();
+			push(ref(db, 'users/carlos/products/'), {
+				name: productName.value,
+				calories: productCalories.value
+			});*/
+
+		}
+
+		return {
+			addCustomProduct,
+			addProductByISBN,
+			productName,
+			productCalories,
+			productISBN,
+			  changeFile
+		}
+	}
 };
 </script>
 
 <style>
+div.line{
+
+  border: 0.125em;
+  border-color: #CFD8DC;
+  margin-top:10px;
+  margin-left:15px;
+  margin-right:15px;
+  border-radius: 1px;
+  border-style: solid ;
+}
+
 ul {
     display: flex;
     flex-direction: column;
     list-style-type: none;
     padding: 0;
 }
+
+li{
+  display:inline-block; 
+  margin: 5px;
+  padding: 5px;
+  margin-left:20px;
+  margin-right:20px;
+  background: #ECEFF1;
+  border-radius: 8px;
+  border:1px grey solid;
+  white-space: break-spaces;
+  align-items: center;
+  justify-content: center;
+
+}
+
+input.addProduct{
+
+  position: relative;
+  background-color: #558fc5;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  top: 0;
+  margin: 5px;
+
+}
+
+li.product{
+  display:flex;
+  margin:20px;
+  margin-right:2em;
+  margin-left:2em;
+  border: 1px solid rgb(167, 167, 167);
+  border-radius:10px;
+  border-width: .1em;
+  background: #ffffff;
+}
+div.product-info{
+  flex:1;
+  display:column;
+}
+p.name{
+  text-align: center;
+
+}
+
+p.calories{
+  text-align:center;
+}
+
+img.food{
+  flex:2;
+
+  border-radius:10px;
+  object-fit: cover;
+  width:1em;
+  height:6em;
+
+}
+
+
 </style>
