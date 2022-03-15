@@ -1,20 +1,23 @@
 <template>
-	<div><h4>Add a new product</h4></div>
-	<div class="add-product">
-		<form @submit="addCustomProduct">
-			<input type="text" placeholder="Name" v-model="productName"/>
-			<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
-			<input type="submit" value="Add Product">
-		</form>
+	<div class="product-form">
+		<div><h4>Add a new product</h4></div>
+		<div class="add-product">
+			<form @submit="addCustomProduct">
+				<input type="text" placeholder="Name" v-model="productName"/>
+				<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
+				<input type="submit" class="addProduct" value="Add Product">
+			</form>
+		</div>
+
+		<div class="add-product">
+			<form @submit="addProductByISBN">
+				<input type="text" placeholder="ISBN" v-model="productISBN"/>
+				<input type="submit" class="addProduct" value="Add Product by ISBN">
+			</form>
+		</div>
+		<div class="line"></div>
 	</div>
 
-	<div class="add-product">
-		<form @submit="addProductByISBN">
-			<input type="text" placeholder="ISBN" v-model="productISBN"/>
-			<input type="submit" value="Add Product by ISBN">
-		</form>
-	</div>
-	<div class="line"></div>
 	<div><h4>Product List</h4></div>
 	<ul>
 	<li v-for="product in productList" :key="product" class="product">
@@ -239,6 +242,9 @@ li{
 
 }
 
+
+
+
 input.addProduct{
 
   position: relative;
@@ -266,6 +272,11 @@ li.product{
 div.product-info{
   flex:1;
   display:column;
+}
+
+div.product-form{
+	padding-left: 2em;
+	padding-right: 2em;
 }
 p.name{
   text-align: center;
