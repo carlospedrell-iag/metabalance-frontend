@@ -23,9 +23,10 @@ div.info,div.receptes{
   margin:2em;;
   margin-left:2em;
   margin-right:2em;
-  background: #F5F5F5;
+  border: 1px solid rgb(167, 167, 167);
   border-radius:10px;
-  border: 1px solid DarkSlateGrey;
+  border-width: .1em;
+  background: #ffffff;
   padding-bottom:10px;
 }
 

@@ -2,7 +2,7 @@
 	<div class="product-form">
 		<div><h4>Add a new product</h4></div>
 		<div class="add-product">
-			<form @submit="addCustomProduct">
+			<form @submit.prevent="addCustomProduct">
 				<input type="text" placeholder="Name" v-model="productName"/>
 				<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
 				<input type="submit" class="addProduct" value="Add Product">
@@ -10,17 +10,20 @@
 		</div>
 
 		<div class="add-product">
-			<form @submit="addProductByISBN">
+			<form @submit.prevent="addProductByISBN">
+				<input type="file" @change="onFileChange">
 				<input type="text" placeholder="ISBN" v-model="productISBN"/>
 				<input type="submit" class="addProduct" value="Add Product by ISBN">
 			</form>
+			
 		</div>
 		<div class="line"></div>
 	</div>
 
 	<div><h4>Product List</h4></div>
 	<ul>
-	<li v-for="product in productList" :key="product" class="product">
+	<li v-for="(product, product_key) in myProductList" :key="product" class="product">
+		<button class="delete" @click="deleteProduct(product_key)">X</button>
 		<div class="product-info">
 			<p class="name">{{product.name}}</p>
 			<p class="calories">{{product.calories}} Calories per 100g</p>
@@ -35,7 +38,7 @@
 /* eslint-disable */
 import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
-import { getDatabase, ref,  get, child, push} from "firebase/database";
+import { getDatabase, ref,  get, child, push as fbPush, remove} from "firebase/database";
 import {ref as vueRef} from 'vue';
 
 const firebaseConfig = {
@@ -56,40 +59,53 @@ const user = firebase.auth().currentUser;
 
 console.log(user)
 
-const db = getDatabase();
-const dbRef = ref(db);
-
 let productList = ["AAS"];
 
-get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
-	if (snapshot.exists()) {
-		console.log(snapshot.val());
-		productList = snapshot.val()
-	} else {
-		console.log("No data available");
-		productList = ["no","noo"]
-	}
-}).catch((error) => {
-	console.error(error);
-});
 
+function loadProducts(){
+
+	console.log("hoy")
+	const db = getDatabase();
+	const dbRef = ref(db);
+
+	return new Promise(
+		get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+		if (snapshot.exists()) {
+
+			return snapshot.val();
+		} else {
+			console.log("No data available");
+		}
+	}).catch((error) => {
+		console.error(error);
+	})
+	);
+}
 
 
 
 export default {
 	data() {
-			return {
-					productList
-			};
+		return {
+			productList: ["A"]
+		};
+	},
+	computed: {
+		myProductList: function () {
+			return  Object.assign({}, this.productList)
+		}
 	},
 	created() {
+
+
 		const db = getDatabase();
 		const dbRef = ref(db);
-		
 		get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
-				this.productList = snapshot.val()
+
+				this.productList = snapshot.val();
+				
 			} else {
 				console.log("No data available");
 				this.productList = ["no","noo"]
@@ -99,9 +115,8 @@ export default {
 		});
 
 
+
 		
-
-
 	},
 	setup() {
 		const productName = vueRef("");
@@ -117,11 +132,11 @@ export default {
 		}
 
 
-		function extractBarcode(){
+		function extractBarcode(file){
 			var Quagga = require('quagga');
 
 			Quagga.decodeSingle({
-				src: require("@/assets/logo.png"),
+				src: file,
 				numOfWorkers: 0,  // Needs to be 0 when used within node
 				inputStream: {
 					size: 800  // restrict input-size to be 800px in width (long-side)
@@ -130,20 +145,40 @@ export default {
 					readers: ["ean_reader"] // List of active readers
 				},
 			}, function(result) {
-				if(result.codeResult) {
+				if(typeof result !== 'undefined') {
 					console.log("result", result.codeResult.code);
-					return result.codeResult.code;
+					getFoodAPI(result.codeResult.code)
 				} else {
 					console.log("not detected");
-					return 1230;
+					alert("Could not detect barcode")
+					return 0
 				}
 			});
+		}
+
+		function getFoodAPI(ISBNcode){
+			console.log("ISBN CODE REVIEVED:" + ISBNcode);
+			var requestOptions = {
+				method: 'GET',
+				redirect: 'follow'
+			};
+
+			fetch("https://world.openfoodfacts.org/api/v0/product/" + ISBNcode + ".json", requestOptions)
+			.then(response => response.text())
+			.then(result => processFoodAPI(result))
+			.catch(error => console.log('error', error));
+
 		}
 
 		function processFoodAPI(result){
 			console.log(result)
 			let data = JSON.parse(result)
 			let product = {}
+			//{"code":"9789681670481","status":0,"status_verbose":"product not found"}
+			if (!data["status"]){
+				alert("Product not found in Food Database");
+				return;
+			}
 
 			product["name"] = data["product"]["product_name"];
 			if (product["name"] == ""){
@@ -156,17 +191,49 @@ export default {
 			console.log(data['product']['image_front_url'])
 
 			const db = getDatabase();
-			push(ref(db, 'users/carlos/products/'), product);
+			fbPush(ref(db, 'users/carlos/products/'), product);
+
+			alert(product["name"] + " Added to your List!");
+			this.$forceUpdate();
+		}
+
+		function deleteProduct(product_key){
+			console.log("Prod key: " + product_key);
+
+			const db = getDatabase();
+			remove(ref(db, 'users/carlos/products/' + product_key));
+
+			const dbRef = ref(db);
+			get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+				if (snapshot.exists()) {
+					console.log(snapshot.val());
+					this.productList = snapshot.val();
+				} else {
+					console.log("No data available");
+					this.productList = []
+				}
+			}).catch((error) => {
+				console.error(error);
+			});
 
 		}
 
+		function onFileChange(e) {
+			console.log(e.target.files[0]);
+			let image_file = URL.createObjectURL(e.target.files[0]);
+			console.log(image_file);
+			extractBarcode(image_file);
+
+			
+		}
+		
 		const addCustomProduct = () => {
 			console.log(productName.value);
 			console.log(productCalories.value);
 
 
 			const db = getDatabase();
-			push(ref(db, 'users/carlos/products/'), {
+			fbPush(ref(db, 'users/carlos/products/'), {
 				name: productName.value,
 				calories: productCalories.value,
 				image: "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg"
@@ -177,19 +244,10 @@ export default {
 		const addProductByISBN = () => {
 			console.log(productISBN.value);
 
-			var requestOptions = {
-				method: 'GET',
-				redirect: 'follow'
-			};
-
-			fetch("https://world.openfoodfacts.org/api/v0/product/" + productISBN.value + ".json", requestOptions)
-			.then(response => response.text())
-			.then(result => processFoodAPI(result))
-			.catch(error => console.log('error', error));
-
+			getFoodAPI(productISBN.value);
 			/*
 			const db = getDatabase();
-			push(ref(db, 'users/carlos/products/'), {
+			fbPush(ref(db, 'users/carlos/products/'), {
 				name: productName.value,
 				calories: productCalories.value
 			});*/
@@ -199,10 +257,12 @@ export default {
 		return {
 			addCustomProduct,
 			addProductByISBN,
+			deleteProduct,
 			productName,
 			productCalories,
 			productISBN,
-			  changeFile
+			changeFile,
+			onFileChange
 		}
 	}
 };
@@ -243,7 +303,9 @@ li{
 }
 
 
-
+div.add-product{
+	margin-bottom: 2em;
+}
 
 input.addProduct{
 
@@ -295,6 +357,10 @@ img.food{
   width:1em;
   height:6em;
 
+}
+
+button.delete {
+    align-self: start;
 }
 
 

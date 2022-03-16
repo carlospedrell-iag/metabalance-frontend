@@ -2,15 +2,15 @@
   <h1>Dishes</h1>
    <div class="plat">
     <div class="infoPlat">
-      <p class="name">Patata</p>
-      <p class="Calories">Calories: 500</p>
+      <p class="name">Macarrons</p>
+      <p class="Calories">Calories: 502</p>
     </div>
     <img class="food" src="@/assets/placeholder-square.jpg">
    </div>
   <div class="plat">
     <div class="infoPlat">
-      <p class="name">El Kirbo</p>
-      <p class="Calories">Calories: 99999</p>
+      <p class="name">Entrepà Pernil</p>
+      <p class="Calories">Calories: 439</p>
     </div>
     <img class="food" src="@/assets/placeholder-square.jpg">
    </div>
@@ -27,9 +27,12 @@ div.plat{
   margin:20px;
   margin-right:2em;
   margin-left:2em;
-  border: 1px solid DarkSlateGrey;
+
+
+  border: 1px solid rgb(167, 167, 167);
   border-radius:10px;
-  background: #F5F5F5;
+  border-width: .1em;
+  background: #ffffff;
 }
 div.infoPlat{
   flex:1;
