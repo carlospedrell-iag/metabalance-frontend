@@ -2,12 +2,12 @@
   <h1>Info</h1>
   <div class="info">
     <h3 class="infoTitle">6 consells per tenir una alimentació més saludable</h3>
-    <img class="dish" src="@/assets/placeholder-square.jpg">
+    <img class="dish" src="@/assets/healthy.jpg">
   </div>
   <h1>Receptes</h1>
-  <div class="receptes">
+  <div class="receptes" >
     <h3 class="dishTitle">Arròs integral amb verdures</h3>
-    <img class="dish" src="@/assets/placeholder-square.jpg">
+    <router-link to="/recipe"> <img class="dish" src="@/assets/arros.jpg"> </router-link>
   </div>
 </template>
 
@@ -36,6 +36,13 @@ div.info,div.receptes{
   text-align:center;
   margin-left:10px;
   margin-right:10px;
+
+}
+
+img.dish{
+
+  width: 80%;
+  height: 80%;
 
 }
 

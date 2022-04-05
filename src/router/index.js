@@ -6,6 +6,7 @@ import RegisterView from '../views/RegisterView.vue'
 import DishesView from '../views/DishesView.vue'
 import LifestyleView from '../views/LifestyleView.vue'
 import InfoView from '../views/InfoView.vue'
+import RecipeView from '../views/RecipeView.vue'
 
 
 const routes = [
@@ -46,6 +47,12 @@ const routes = [
     path: '/info',
     name: 'Info',
     component: InfoView
+  },
+  {
+    path: '/recipe',
+    name: 'Recipe',
+    component: RecipeView
+
   }
 ]
 

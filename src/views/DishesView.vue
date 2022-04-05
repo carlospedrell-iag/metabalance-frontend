@@ -5,14 +5,14 @@
       <p class="name">Macarrons</p>
       <p class="Calories">Calories: 502</p>
     </div>
-    <img class="food" src="@/assets/placeholder-square.jpg">
+    <img class="food" src="@/assets/macarrons.jpg">
    </div>
   <div class="plat">
     <div class="infoPlat">
       <p class="name">Entrepà Pernil</p>
       <p class="Calories">Calories: 439</p>
     </div>
-    <img class="food" src="@/assets/placeholder-square.jpg">
+    <img class="food" src="@/assets/entrepa.jpg">
    </div>
 </template>
 
