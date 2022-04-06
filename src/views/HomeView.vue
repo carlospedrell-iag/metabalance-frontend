@@ -4,7 +4,7 @@
    
 
 
-  <product-list/>
+  <global-product-list/>
   <button class="logout" @click="Logout">Logout</button>
 </template>
 
@@ -14,7 +14,7 @@ import { ref, onBeforeMount } from 'vue';
 
 import firebase from 'firebase/compat/app';
 
-import ProductList from '../components/ProductList.vue';
+import GlobalProductList from '../components/GlobalProductList.vue';
 
 export default {
   setup() {
@@ -42,7 +42,7 @@ export default {
     }
   },
   components : {
-    ProductList
+    GlobalProductList
   }
 }
 </script>

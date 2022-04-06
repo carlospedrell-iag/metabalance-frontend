@@ -2,7 +2,7 @@
   <footer>
       <nav>
         <router-link class="link" to="/"><i class="fas fa-home" :class="{ active: $route.path=='/' }"></i></router-link>
-        <router-link class="link" to="/dishes"><i class="fas fa-utensils" :class="{ active: $route.path=='/dishes' }"></i></router-link>
+        <router-link class="link" to="/dishes"><i class="fas fa-utensils" :class="{ active: $route.path=='/dishes' || $route.path=='/create-dish' }"></i></router-link>
         <router-link class="link" to="/lifestyle"><i class="fas fa-calendar-alt" :class="{ active: $route.path=='/lifestyle' }"></i></router-link>
         <router-link class="link" to="/info"><i class="fas fa-info-circle" :class="{ active: $route.path=='/info' }"></i></router-link>
 
