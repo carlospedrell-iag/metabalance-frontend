@@ -3,15 +3,22 @@
 		<div><h4>Add a new product</h4></div>
 		<div class="add-product">
 			<form @submit.prevent="addCustomProduct">
+				
 				<input type="text" placeholder="Name" v-model="productName"/>
 				<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
 				<input type="submit" class="addProduct" value="Add Product">
 			</form>
 		</div>
 
+		<label for="file-upload" class="custom-file-upload">
+			Upload File
+			<i class="fas fa-upload"></i>
+		</label>
+
 		<div class="add-product">
 			<form @submit.prevent="addProductByISBN">
-				<input type="file" @change="onFileChange">
+				
+				<input id="file-upload" type="file" @change="onFileChange">
 				<input type="text" placeholder="ISBN" v-model="productISBN"/>
 				<input type="submit" class="addProduct" value="Add Product by ISBN">
 			</form>
@@ -21,9 +28,10 @@
 	</div>
 
 	<div><h4>Product List</h4></div>
+
 	<ul>
 	<li v-for="(product, product_key) in myProductList" :key="product" class="product">
-		<button class="delete" @click="deleteProduct(product_key)">X</button>
+		<button class="fas fa-trash-alt" @click="deleteProduct(product_key)"></button>
 		<div class="product-info">
 			<p class="name">{{product.name}}</p>
 			<p class="calories">{{product.calories}} Calories per 100g</p>
@@ -359,8 +367,30 @@ img.food{
 
 }
 
-button.delete {
+button.fa-trash-alt {
     align-self: start;
+	background-color: #558fc5;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+	border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+	background:#558fc5;
+	border-radius: 8px;
+	font-size: 12px;
+  	color: white;
 }
 
 
