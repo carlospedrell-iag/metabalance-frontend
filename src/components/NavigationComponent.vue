@@ -45,10 +45,11 @@ nav {
 i {
   font-size: 2em;
   transition: .2s ease-in-out;
+  color:white;
 }
 
 i.active {
-  color:#153c77;
+  color:#156fb9;
 }
 
 </style>
