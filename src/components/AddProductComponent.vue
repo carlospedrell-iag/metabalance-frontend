@@ -5,8 +5,10 @@
 
 			<div class="product-info">
 				<p class="name">{{product.name}}</p>
+				<p class="name">{{product.calories}} calories per 100g</p>
+				
 			</div>
-			<button class="addProduct" @click="addProduct(product_key)">+</button>
+			<button class="addProduct" @click="addProduct(product, product_key)">+</button>
 		</li>
 	</ul>
 </template>
@@ -59,11 +61,12 @@ export default {
 		
 	},
 	methods: {
-		addProduct(product_key){
-			console.log("Prod key: " + product_key);
+		addProduct(product, product_key){
+			console.log("Product " + product.name + ", Prod key: " + product_key);
+			let quantity = prompt('Quantity (grams)');
 
-			this.$emit('add-product', product_key)
-
+			this.$emit('add-product', product_key, product.name, product.calories, quantity );
+			
 		}
 	},
 

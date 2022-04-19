@@ -1,27 +1,11 @@
 <template>
-	<h1>Dishes</h1>
-	<div class="plat">
-		<div class="infoPlat">
-			<p class="name">Macarrons</p>
-			<p class="Calories">Calories: 502</p>
-		</div>
-		<img class="food" src="@/assets/macarrons.jpg">
-	</div>
-	<div class="plat">
-		<div class="infoPlat">
-			<p class="name">Entrepà Pernil</p>
-			<p class="Calories">Calories: 439</p>
-		</div>
-		<img class="food" src="@/assets/entrepa.jpg">
-	</div>
-
-	<div><h4>Dishes</h4></div>
+	<div><h1>Dishes</h1></div>
 		<ul>
 			<li v-for="(dish, dish_key) in dishesList" :key="dish" class="plat">
 				<button class="delete" @click="deleteDish(dish_key)">X</button>
 					<div class="infoPlat">
 						<p class="name">{{dish.name}}</p>
-						<p class="calories">{{dish.calories}} Calories per 100g</p>
+						<p class="calories">{{dish.total_calories}} Calories</p>
 					</div>
 				<img class="food" :src="dish.image" alt="dish">
 			</li>

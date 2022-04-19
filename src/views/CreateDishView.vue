@@ -9,11 +9,13 @@
 		</div>
         <div><h4>Ingredients</h4></div>
 
-        <product-list :list="currentList"/>
+        <product-list :list="currentList" :total_calories="total_calories"/>
         
         <button @click="toggleAddProduct" v-if="!showAddProduct">+</button>
         <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
 		<div class="line"></div>
+
+
 
         <button class="createDish" @click="createDish()">Create Dish</button>
 	</div>
@@ -52,7 +54,8 @@ export default {
         return {
 			showAddProduct: false,
             dishName: "",
-            currentList: []
+            currentList: [],
+            total_calories: 0,
 		};
     },
     methods: {
@@ -60,9 +63,20 @@ export default {
             this.showAddProduct = !this.showAddProduct;
         },
 
-        onAddProduct(product_key){
-            console.log("CreateDish Recieved Product: " + product_key);
-            this.currentList.push(product_key)
+        onAddProduct(product_key, product_name, calories, quantity){
+            console.log("CreateDish Recieved Product: " + product_name + " Quantity: " + quantity + " Calories: " + calories);
+            let product = {};
+            product["name"] = product_name
+            product["product_key"] = product_key;
+            product["quantity"] = quantity;
+            product["calories"] = calories;
+
+
+            this.currentList.push(product)
+
+            this.currentList.forEach(element => {
+                this.total_calories += (element["quantity"] * element["calories"]) / 100;
+            });
             this.toggleAddProduct()
         },
         createDish(){
@@ -83,7 +97,7 @@ export default {
             const db = getDatabase();
 			fbPush(ref(db, 'users/carlos/dishes/'), {
 				name: this.dishName,
-				calories: 0,
+				total_calories: this.total_calories,
 				products: this.currentList
 			});
             this.$router.push('dishes');     
