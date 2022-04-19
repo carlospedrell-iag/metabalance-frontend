@@ -8,7 +8,7 @@ import LifestyleView from '../views/LifestyleView.vue'
 import InfoView from '../views/InfoView.vue'
 import RecipeView from '../views/RecipeView.vue'
 import CreateDishView from '../views/CreateDishView.vue'
-
+import ModifyDietView from '../views/ModifyDietView.vue'
 
 const routes = [
   {
@@ -59,6 +59,12 @@ const routes = [
     path: '/create-dish',
     name: 'CreateDish',
     component: CreateDishView
+
+  },
+  {
+    path: '/modify-diet',
+    name: 'ModifyDiet',
+    component: ModifyDietView
 
   }
 ]

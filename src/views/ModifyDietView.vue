@@ -1,0 +1,277 @@
+<template>
+
+  <h1>Diet</h1>
+
+  <h2>Monday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.monday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.monday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.monday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.monday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Tuesday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.tuesday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.tuesday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.tuesday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.tuesday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Wednesday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.wednesday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.wednesday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.wednesday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.wednesday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Thursday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.thursday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.thursday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.thursday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.thursday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Friday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.friday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.friday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.friday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.friday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Saturday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.saturday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.saturday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.saturday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.saturday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+  <h2>Sunday</h2>
+  <p>Breakfast</p>
+	<ul>
+    <li v-for="(dish) in schedule.sunday.breakfast.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Lunch</p>
+	<ul>
+    <li v-for="(dish) in schedule.sunday.lunch.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Snack</p>
+	<ul>
+    <li v-for="(dish) in schedule.sunday.snack.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+  <p>Dinner</p>
+	<ul>
+    <li v-for="(dish) in schedule.sunday.dinner.dishes" :key="dish">      
+      <p class="dish">{{dish}}</p>
+    </li>
+  </ul>
+
+</template>
+
+<script>
+/* eslint-disable */
+import firebase from 'firebase/compat/app';
+import "firebase/compat/auth";
+import { getDatabase, ref,  get, child, push as fbPush, remove} from "firebase/database";
+import {ref as vueRef} from 'vue';
+
+const firebaseConfig = {
+	apiKey: "AIzaSyA-L4m63a_KvLtFAitIoO0xrbwE4J-3Y2g",
+	authDomain: "pmmii-d7a71.firebaseapp.com",
+	databaseURL: "https://pmmii-d7a71-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "pmmii-d7a71",
+	storageBucket: "pmmii-d7a71.appspot.com",
+	messagingSenderId: "972862324822",
+	appId: "1:972862324822:web:719cd91f83f36addd27bf7",
+	measurementId: "G-VW02Q6T63P"
+	};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const user = firebase.auth().currentUser;
+
+console.log(user)
+
+export default {
+    data(){
+        return {
+            schedule: []
+		};
+    },
+	created() {
+
+
+		const db = getDatabase();
+		const dbRef = ref(db);
+		get(child(dbRef, `users/carlos/schedule`)).then((snapshot) => {
+			if (snapshot.exists()) {
+				console.log(snapshot.val());
+
+				this.schedule = snapshot.val();
+				
+			} else {
+				console.log("No data available");
+				this.schedule = []
+			}
+		}).catch((error) => {
+			console.error(error);
+		});
+		
+	},
+    methods: {
+        deleteDish(dish_key) {
+            console.log("Deleting, Dish key: " + dish_key);
+			const db = getDatabase();
+			remove(ref(db, 'users/carlos/dishes/' + dish_key));
+
+			const dbRef = ref(db);
+			get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+				if (snapshot.exists()) {
+					console.log(snapshot.val());
+					this.productList = snapshot.val();
+				} else {
+					console.log("No data available");
+					this.productList = []
+				}
+			}).catch((error) => {
+				console.error(error);
+			});
+        }
+    },
+
+
+}
+</script>
+
+<style>
+ 
+ li {
+     padding: 0em;
+     margin-right: 7em;
+     margin-left: 7em;
+    
+ }
+
+ p.dish {
+     margin: .5em;
+ }
+</style>

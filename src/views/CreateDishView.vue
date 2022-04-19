@@ -63,20 +63,21 @@ export default {
             this.showAddProduct = !this.showAddProduct;
         },
 
-        onAddProduct(product_key, product_name, calories, quantity){
+        onAddProduct(product_key, product_name, calories, quantity, image){
             console.log("CreateDish Recieved Product: " + product_name + " Quantity: " + quantity + " Calories: " + calories);
             let product = {};
             product["name"] = product_name
             product["product_key"] = product_key;
             product["quantity"] = quantity;
             product["calories"] = calories;
+            product["image"] = image;
 
 
             this.currentList.push(product)
 
-            this.currentList.forEach(element => {
-                this.total_calories += (element["quantity"] * element["calories"]) / 100;
-            });
+         
+            this.total_calories += (product["quantity"] * product["calories"]) / 100;
+  
             this.toggleAddProduct()
         },
         createDish(){

@@ -4,11 +4,8 @@
   <div>
     <img class="dish" src="@/assets/placeholder-square.jpg">
   </div>
-  <h2>Calories Extra</h2>
-  <div>
-     <img class="dish" src="@/assets/placeholder-square.jpg">
-  </div>
-  <button class="dieta">Modificar Dieta</button>
+
+  <router-link class="moddieta" to="/modify-diet">Modificar Dieta</router-link>
 
 </template>
 
@@ -20,7 +17,7 @@ export default {
 
 <style>
 
-button.dieta{
+.moddieta{
 
   position: relative;
   background-color: #558fc5;
@@ -31,7 +28,7 @@ button.dieta{
   color: white;
   top: 0;
   margin-top:2em;
-
+  text-decoration: none;
 }
 img.dish{
   height:20%;

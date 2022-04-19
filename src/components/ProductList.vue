@@ -6,6 +6,7 @@
 				<p class="name">{{product["name"]}}</p>
 				<p class="calories">{{(product["quantity"] * product["calories"]) / 100}} Calories</p>
 			</div>
+			<img class="food" :src="product['image']" alt="product">
 		</li>
 		<p class="total_calories">Total Calories: {{total_calories}}</p>
 	</ul>

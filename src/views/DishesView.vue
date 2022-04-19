@@ -7,7 +7,6 @@
 						<p class="name">{{dish.name}}</p>
 						<p class="calories">{{dish.total_calories}} Calories</p>
 					</div>
-				<img class="food" :src="dish.image" alt="dish">
 			</li>
 		</ul>
 	<router-link class="link" to="/create-dish"><i class="fas fa-plus" :class="{ active: $route.path=='/' }"></i></router-link>

@@ -6,8 +6,8 @@
 			<div class="product-info">
 				<p class="name">{{product.name}}</p>
 				<p class="name">{{product.calories}} calories per 100g</p>
-				
 			</div>
+			<img class="food" :src="product['image']" alt="product">
 			<button class="addProduct" @click="addProduct(product, product_key)">+</button>
 		</li>
 	</ul>
@@ -65,7 +65,7 @@ export default {
 			console.log("Product " + product.name + ", Prod key: " + product_key);
 			let quantity = prompt('Quantity (grams)');
 
-			this.$emit('add-product', product_key, product.name, product.calories, quantity );
+			this.$emit('add-product', product_key, product.name, product.calories, quantity , product.image);
 			
 		}
 	},
