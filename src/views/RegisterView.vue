@@ -1,14 +1,16 @@
 <template>
 	<br><br><br>
-	<h1 class="register">Register</h1>
-	<div class="register">
-		<form @submit.prevent="Register">
-			<input type="text" placeholder="Email" v-model="email"/>
-			<input type="password" placeholder="Password" v-model="password" />
-			<input class="register" type="submit" value="Register">
-			<p class="register">Have an account? <router-link class="link" to='/login'>Login Here </router-link></p>
-		</form>
-  </div>
+	<div class="back">
+		<h1 class="register">Register</h1>
+		<div class="register">
+			<form @submit.prevent="Register">
+				<input type="text" placeholder="Email" v-model="email"/>
+				<input type="password" placeholder="Password" v-model="password" />
+				<input class="register" type="submit" value="Register">
+				<p class="register">Have an account? <router-link class="links" to='/login'>Login Here </router-link></p>
+			</form>
+		</div>
+		</div>
 </template>
 
 <script>
@@ -50,6 +52,7 @@ div.register{
 	padding-top: 2em;
 	justify-content: center;
 	align-items: center;
+	margin: 2em;
 }
 
 input.register{
@@ -63,12 +66,6 @@ input.register{
   font-size: 1em;
   color: white;
   top: 0;
-
-}
-
-.link{
-	font-weight: bold;
-	color: #1E90FF;
 
 }
 

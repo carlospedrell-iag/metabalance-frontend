@@ -108,8 +108,23 @@ display: flex;
 
 }
 
+div.back{
+
+	background: url(assets/outgenieros_gray.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+
+}
+
 a {
   color: inherit;
+}
+
+.links{
+	font-weight: bold;
+	color: #1E90FF;
+
 }
 
 @media (max-width : 500px) {
