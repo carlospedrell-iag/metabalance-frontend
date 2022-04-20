@@ -1,10 +1,10 @@
 <template>
   <footer>
       <nav>
-        <router-link class="link" to="/"><i class="fas fa-home" :class="{ active: $route.path=='/' }"></i></router-link>
-        <router-link class="link" to="/dishes"><i class="fas fa-utensils" :class="{ active: $route.path=='/dishes' }"></i></router-link>
-        <router-link class="link" to="/lifestyle"><i class="fas fa-calendar-alt" :class="{ active: $route.path=='/lifestyle' }"></i></router-link>
-        <router-link class="link" to="/info"><i class="fas fa-info-circle" :class="{ active: $route.path=='/info' }"></i></router-link>
+        <router-link class="link nav" to="/"><i class="fas fa-home nav" :class="{ active: $route.path=='/' }"></i></router-link>
+        <router-link class="link nav" to="/dishes"><i class="fas fa-utensils nav" :class="{ active: $route.path=='/dishes' || $route.path=='/create-dish' }"></i></router-link>
+        <router-link class="link nav" to="/lifestyle"><i class="fas fa-calendar-alt nav" :class="{ active: $route.path=='/lifestyle' || $route.path=='/modify-diet' }"></i></router-link>
+        <router-link class="link nav" to="/info"><i class="fas fa-info-circle nav" :class="{ active: $route.path=='/info' }"></i></router-link>
 
       </nav>
   </footer>
@@ -27,6 +27,7 @@ footer {
     bottom: 0;
     height: 4em;
     color: white;
+    padding-bottom: 1em;
 }
 
 nav {
@@ -41,13 +42,17 @@ nav {
     
 }
 
+i.nav {
+  color:white;
+}
 i {
   font-size: 2em;
   transition: .2s ease-in-out;
+
 }
 
 i.active {
-  color:#153c77;
+  color:#156fb9;
 }
 
 </style>

@@ -9,6 +9,8 @@ import InfoView from '../views/InfoView.vue'
 import RecipeView from '../views/RecipeView.vue'
 import DeepInfoView from '../views/DeepInfoView.vue'
 
+import CreateDishView from '../views/CreateDishView.vue'
+import ModifyDietView from '../views/ModifyDietView.vue'
 
 const routes = [
   {
@@ -59,6 +61,17 @@ const routes = [
     path: '/information',
     name: 'Information',
     component: DeepInfoView
+  },
+  {
+    path: '/create-dish',
+    name: 'CreateDish',
+    component: CreateDishView
+
+  },
+  {
+    path: '/modify-diet',
+    name: 'ModifyDiet',
+    component: ModifyDietView
 
   }
 ]
