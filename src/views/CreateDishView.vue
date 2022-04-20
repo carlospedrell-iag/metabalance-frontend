@@ -8,14 +8,14 @@
 			</form>
 		</div>
         <div><h4>Ingredients</h4></div>
-        <label class ="create-dish">
+        <div class ="create-dish">
             <button class="add-product" @click="toggleAddProduct" v-if="!showAddProduct">Add Product</button>
             <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
 
             <product-list :list="currentList" :total_calories="total_calories"/>
 
             <button class="createDish" @click="createDish()">Create Dish</button>
-        </label>
+        </div>
 	</div>
 </template>
 
