@@ -2,187 +2,306 @@
 
   <h1>Diet</h1>
 
-  <h2>Monday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.monday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.monday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.monday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.monday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+  <div class="day">
 
-  <h2>Tuesday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.tuesday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.tuesday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.tuesday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.tuesday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+    <h2>Monday</h2>
 
-  <h2>Wednesday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.wednesday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.wednesday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.wednesday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.wednesday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.monday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
 
-  <h2>Thursday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.thursday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.thursday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.thursday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.thursday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.monday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
 
-  <h2>Friday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.friday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.friday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.friday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.friday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.monday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
 
-  <h2>Saturday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.saturday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.saturday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.saturday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.saturday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.monday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
 
-  <h2>Sunday</h2>
-  <p>Breakfast</p>
-	<ul>
-    <li v-for="(dish) in schedule.sunday.breakfast.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Lunch</p>
-	<ul>
-    <li v-for="(dish) in schedule.sunday.lunch.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Snack</p>
-	<ul>
-    <li v-for="(dish) in schedule.sunday.snack.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
-  <p>Dinner</p>
-	<ul>
-    <li v-for="(dish) in schedule.sunday.dinner.dishes" :key="dish">      
-      <p class="dish">{{dish}}</p>
-    </li>
-  </ul>
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Tuesday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.tuesday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.tuesday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.tuesday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.tuesday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Wednesday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.wednesday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.wednesday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.wednesday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.wednesday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Thursday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.thursday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.thursday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.thursday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.thursday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Friday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.friday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.friday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.friday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.friday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Saturday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.saturday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.saturday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.saturday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.saturday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
+
+  <div class="day">
+
+    <h2>Sunday</h2>
+
+    <div class="meal">
+      <p class="meal-title">Breakfast</p>
+      <ul>
+        <li v-for="(dish) in schedule.sunday.breakfast.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>  
+    </div>
+
+    <div class="meal">    
+      <p class="meal-title">Lunch</p>
+      <ul>
+        <li v-for="(dish) in schedule.sunday.lunch.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Snack</p>
+      <ul>
+        <li v-for="(dish) in schedule.sunday.snack.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="meal">  
+      <p class="meal-title">Dinner</p>
+      <ul>
+        <li v-for="(dish) in schedule.sunday.dinner.dishes" :key="dish">      
+          <p class="dish">{{dish}}</p>
+        </li>
+      </ul>
+      </div>
+      
+  </div>
+  
 
 </template>
 
@@ -264,14 +383,33 @@ export default {
 
 <style>
  
- li {
-     padding: 0em;
-     margin-right: 7em;
-     margin-left: 7em;
+  li {
+    padding: 0em;
+    margin-right: 2em;
+    margin-left: 2em;
     
- }
+  }
 
- p.dish {
-     margin: .5em;
- }
+  .day {
+    margin: 2em;
+
+    border: 3px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .meal {
+    margin: 2em;
+    margin-left: 2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  p.dish {
+    margin: .5em;
+  }
+
+  .meal-title{
+    color:rgb(66, 66, 66);
+    font-size: .8em;
+  }
+
 </style>
