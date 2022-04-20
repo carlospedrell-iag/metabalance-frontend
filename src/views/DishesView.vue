@@ -2,7 +2,7 @@
 	<div><h1>Dishes</h1></div>
 		<ul>
 			<li v-for="(dish, dish_key) in dishesList" :key="dish" class="plat">
-				<button class="delete" @click="deleteDish(dish_key)">X</button>
+				<button class="fas fa-trash-alt" @click="deleteDish(dish_key)"></button>
 					<div class="infoPlat">
 						<p class="name">{{dish.name}}</p>
 						<p class="calories">{{dish.total_calories}} Calories</p>
@@ -105,12 +105,15 @@ export default {
 	background: #ffffff;
 }
 .infoPlat{
-	flex:1;
 	display:column;
+	align-content: center;
+	flex:1;
 }
+
 .name{
 	text-align: center;
-
+	font-weight: bold;
+	font-size: 1.2em;
 }
 
 .calories{
@@ -122,6 +125,18 @@ export default {
 	max-width:30%;
 	border-radius:10px;
 
+}
+
+button.fa-trash-alt {
+    align-self: center;
+	background-color: #558fc5;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin-left:2em;
 }
 
 </style>

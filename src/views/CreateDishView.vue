@@ -1,23 +1,21 @@
 <template>
+    <div><h2>Create Dish</h2></div>
     <div class="dish-form">
-		<div><h4>Create Dish</h4></div>
-		<div class="add-product">
-			<form @submit.prevent="addCustomProduct">
+		<div>
+			<form class="insertName" @submit.prevent="addCustomProduct">
 				<input type="text" placeholder="Name" v-model="dishName"/>
 
 			</form>
 		</div>
         <div><h4>Ingredients</h4></div>
+        <label class ="create-dish">
+            <button class="add-product" @click="toggleAddProduct" v-if="!showAddProduct">Add Product</button>
+            <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
 
-        <product-list :list="currentList" :total_calories="total_calories"/>
-        
-        <button @click="toggleAddProduct" v-if="!showAddProduct">+</button>
-        <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
-		<div class="line"></div>
+            <product-list :list="currentList" :total_calories="total_calories"/>
 
-
-
-        <button class="createDish" @click="createDish()">Create Dish</button>
+            <button class="createDish" @click="createDish()">Create Dish</button>
+        </label>
 	</div>
 </template>
 
@@ -114,5 +112,45 @@ export default {
 </script>
 
 <style>
+
+.dish-form{
+    display:column;
+}
+
+.insertName{
+    display:flex;
+	margin:20px;
+	margin-right:2em;
+	margin-left:2em;
+}
+
+button.createDish{
+    align-self: center;
+	background-color: #558fc5;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin-left:2em;
+}
+
+button.add-product{
+    align-self: center;
+	background-color: #558fc5;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin-left:2em;
+}
+
+.create-dish{
+    display: block;
+    align-self: center;
+}
 
 </style>

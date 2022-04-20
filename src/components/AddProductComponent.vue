@@ -8,7 +8,7 @@
 				<p class="name">{{product.calories}} calories per 100g</p>
 			</div>
 			<img class="food" :src="product['image']" alt="product">
-			<button class="addProduct" @click="addProduct(product, product_key)">+</button>
+			<button class="addProduct" @click="addProduct(product, product_key)">Add</button>
 		</li>
 	</ul>
 </template>
@@ -81,5 +81,18 @@ export default {
 </script>
 
 <style>
+
+button.addProduct{
+	align-self: center;
+	background-color: #558fc5;
+	border-radius: 3px;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin-left:2em;
+	margin-right:2em;
+}
 
 </style>
