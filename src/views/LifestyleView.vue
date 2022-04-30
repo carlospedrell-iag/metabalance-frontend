@@ -28,12 +28,14 @@ export default {
   color: white;
   top: 0;
   margin-top:2em;
+  margin-bottom: 2em;
   text-decoration: none;
 }
 img.dish{
   height:20%;
   width:50%;
   border-radius:10px;
+  margin-bottom: 2.5em;
 
 }
 

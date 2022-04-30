@@ -139,4 +139,9 @@ button.fa-trash-alt {
 	margin-left:2em;
 }
 
+i.fas-fa-plus{
+
+ margin-bottom: 2em;
+
+}
 </style>

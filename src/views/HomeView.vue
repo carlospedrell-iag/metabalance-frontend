@@ -55,6 +55,7 @@ button.logout{
   background-color: #558fc5;
   border: none;
   padding: 15px 32px;
+  margin-bottom: 2.5em;
   border-radius: 8px;
   font-size: 16px;
   color: white;
