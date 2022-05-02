@@ -1,42 +1,144 @@
 <template>
   <h1>Lifestyle</h1>
-  <h2>Pròxim Apat</h2>
-  <div>
-    <img class="dish" src="@/assets/placeholder-square.jpg">
+
+  <h2>Next Meal</h2>
+
+  <div class="meal">
+    <div class="current-day" style="text-transform:capitalize;">{{current_day}}</div>
+    <div class="meal-title-lifestyle" style="text-transform:capitalize;">{{next_meal_title}}</div>
+    <ul>
+        <li v-for="(dish) in next_meal" :key="dish">      
+          <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
+        </li>
+    </ul>
   </div>
 
-  <router-link class="moddieta" to="/modify-diet">Modificar Dieta</router-link>
+
+<br><br>
+  <router-link class="moddieta" to="/modify-diet">Edit Diet</router-link>
 
 </template>
 
 <script>
+/* eslint-disable */
+import firebase from 'firebase/compat/app';
+import "firebase/compat/auth";
+import { getDatabase, ref,  get, child, push as fbPush, remove} from "firebase/database";
+import {ref as vueRef} from 'vue';
+import {useRouter, useRoute } from 'vue-router';
+
+const firebaseConfig = {
+	apiKey: "AIzaSyA-L4m63a_KvLtFAitIoO0xrbwE4J-3Y2g",
+	authDomain: "pmmii-d7a71.firebaseapp.com",
+	databaseURL: "https://pmmii-d7a71-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "pmmii-d7a71",
+	storageBucket: "pmmii-d7a71.appspot.com",
+	messagingSenderId: "972862324822",
+	appId: "1:972862324822:web:719cd91f83f36addd27bf7",
+	measurementId: "G-VW02Q6T63P"
+	};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const user = firebase.auth().currentUser;
+
+console.log(user)
+
 export default {
+
+  data(){
+    return{
+      days: ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'],
+      current_day: '',
+      next_meal_title: '',
+      dishesList: [],
+      next_meal: []
+    }
+
+  },
+  created(){
+    const d = new Date();
+    let day = d.getDay();
+
+    this.current_day = this.days[day];
+
+    let hour = d.getHours();
+
+    if((hour < 11) && (hour > 0) ) {
+      this.next_meal_title = 'breakfast'
+    } else
+
+    if((hour >= 11) && (hour < 15)) {
+      this.next_meal_title = 'lunch'
+    } else
+
+    if((hour >= 15) && (hour < 19)) {
+      this.next_meal_title = 'snack'
+    } else 
+
+    if((hour >= 19) && (hour < 25)) {
+      this.next_meal_title = 'dinner'
+    }
+
+
+    const db = getDatabase();
+		const dbRef = ref(db);
+		get(child(dbRef, 'users/carlos/schedule/' + this.current_day + '/' + this.next_meal_title + '/dishes' )).then((snapshot) => {
+			if (snapshot.exists()) {
+				console.log(snapshot.val());
+
+        this.next_meal = snapshot.val();
+				
+			} else {
+				console.log("No data available");
+				this.next_meal = [];
+        this.next_meal.push({ name: 'No next meal'})
+        console.log(this.next_meal);
+			}
+		}).catch((error) => {
+			console.error(error);
+		});
+  }
 
 }
 </script>
 
 <style>
 
-.moddieta{
 
-  position: relative;
+.current-day{
+  margin:.5em;
+
+}
+ .day {
+    margin: 2em;
+
+    border: 3px solid #ccc;
+    border-radius: 4px;
+  }
+
+
+  p.dish {
+    margin: .5em;
+  }
+
+  .meal-title-lifestyle{
+    color:rgb(66, 66, 66);
+    font-size: 2em;
+  }
+
+.moddieta{
   background-color: #558fc5;
   border: none;
-  padding: 15px 32px;
+  padding: .5em 1em;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1em;
   color: white;
   top: 0;
-  margin-top:2em;
-  margin-bottom: 2em;
+  margin-top:5em;
   text-decoration: none;
 }
-img.dish{
-  height:20%;
-  width:50%;
-  border-radius:10px;
-  margin-bottom: 2.5em;
 
-}
 
 </style>

@@ -3,7 +3,7 @@
       <nav>
         <router-link class="link nav" to="/"><i class="fas fa-home nav" :class="{ active: $route.path=='/' }"></i></router-link>
         <router-link class="link nav" to="/dishes"><i class="fas fa-utensils nav" :class="{ active: $route.path=='/dishes' || $route.path=='/create-dish' }"></i></router-link>
-        <router-link class="link nav" to="/lifestyle"><i class="fas fa-calendar-alt nav" :class="{ active: $route.path=='/lifestyle' || $route.path=='/modify-diet' }"></i></router-link>
+        <router-link class="link nav" to="/lifestyle"><i class="fas fa-calendar-alt nav" :class="{ active: $route.path=='/lifestyle' || $route.path=='/modify-diet' || $route.path=='/edit-meal' }"></i></router-link>
         <router-link class="link nav" to="/info"><i class="fas fa-info-circle nav" :class="{ active: $route.path=='/info' }"></i></router-link>
 
       </nav>
