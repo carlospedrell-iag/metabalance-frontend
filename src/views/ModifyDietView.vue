@@ -380,6 +380,7 @@ export default {
 
     border: 3px solid #ccc;
     border-radius: 4px;
+    background-color: #F6F6F6;
   }
 
   .meal {
@@ -387,6 +388,7 @@ export default {
     margin-left: 2em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #CCECF7;
   }
   p.dish {
     margin: .5em;
