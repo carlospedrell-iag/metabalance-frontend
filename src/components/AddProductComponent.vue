@@ -62,7 +62,10 @@ export default {
 	methods: {
 		addProduct(product, product_key){
 			console.log("Product " + product.name + ", Prod key: " + product_key);
-			let quantity = prompt('Quantity (grams)');
+			var quantity = (function ask() {
+  var n = prompt('Number from 1 to 100:');
+  return isNaN(n) || +n > 100 || +n < 1 ? ask() : n;
+}());
 
 			this.$emit('add-product', product_key, product.name, product.calories, quantity , product.image);
 			

@@ -11,6 +11,7 @@ import DeepInfoView from '../views/DeepInfoView.vue'
 
 import CreateDishView from '../views/CreateDishView.vue'
 import ModifyDietView from '../views/ModifyDietView.vue'
+import EditMealView from '../views/EditMealView.vue'
 
 const routes = [
   {
@@ -73,6 +74,11 @@ const routes = [
     name: 'ModifyDiet',
     component: ModifyDietView
 
+  },
+  {
+    path: '/edit-meal',
+    name: 'EditMeal',
+    component: EditMealView
   }
 ]
 

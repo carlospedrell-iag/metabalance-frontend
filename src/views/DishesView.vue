@@ -4,7 +4,7 @@
 			<li v-for="(dish, dish_key) in dishesList" :key="dish" class="plat">
 				<button class="fas fa-trash-alt" @click="deleteDish(dish_key)"></button>
 					<div class="infoPlat">
-						<p class="name">{{dish.name}}</p>
+						<p class="name" style="text-transform:capitalize;">{{dish.name}}</p>
 						<p class="calories">{{dish.total_calories}} Calories</p>
 					</div>
 			</li>
@@ -75,6 +75,7 @@ export default {
 				if (snapshot.exists()) {
 					console.log(snapshot.val());
 					this.productList = snapshot.val();
+					window.location.reload();
 				} else {
 					console.log("No data available");
 					this.productList = []

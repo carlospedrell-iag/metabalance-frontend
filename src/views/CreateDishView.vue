@@ -11,7 +11,7 @@
         <div class ="create-dish">
             <button class="add-product" @click="toggleAddProduct" v-if="!showAddProduct">Add Product</button>
             <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
-
+            
             <product-list :list="currentList" :total_calories="total_calories"/>
 
             <button class="createDish" @click="createDish()">Create Dish</button>
@@ -23,6 +23,7 @@
 
 import ProductList from '../components/ProductList.vue';
 import AddProductComponent from '../components/AddProductComponent.vue'
+import GlobalProductList from '../components/GlobalProductList.vue';
 
 /* eslint-disable */
 import firebase from 'firebase/compat/app';
@@ -51,6 +52,7 @@ export default {
     data(){
         return {
 			showAddProduct: false,
+            showCreateProduct: false,
             dishName: "",
             currentList: [],
             total_calories: 0,
@@ -59,6 +61,10 @@ export default {
     methods: {
         toggleAddProduct () {
             this.showAddProduct = !this.showAddProduct;
+        },
+
+        toggleCreateProduct () {
+            this.showCreateProduct = !this.showCreateProduct;
         },
 
         onAddProduct(product_key, product_name, calories, quantity, image){
@@ -105,7 +111,8 @@ export default {
 
     components: { 
         ProductList,
-        AddProductComponent
+        AddProductComponent,
+        GlobalProductList
     },
 
 }
