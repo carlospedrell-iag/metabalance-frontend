@@ -6,9 +6,9 @@
   <div class="meal">
     <div class="current-day" style="text-transform:capitalize;">{{current_day}}</div>
     <div class="meal-title-lifestyle" style="text-transform:capitalize;">{{next_meal_title}}</div>
-    <img class="picture" src="@/assets/placeholder-square.jpg">
       <ul>
-          <li v-for="(dish) in next_meal" :key="dish">      
+          <li  class="laif" v-for="(dish) in next_meal" :key="dish">     
+            <img class="picture" src="@/assets/placeholder-square.jpg"> 
             <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
           </li>
       </ul>
@@ -122,27 +122,22 @@ export default {
  .picture {
 
     display: block;
-    margin-left: 2em;
-    margin-top: 2em;
-    margin-right: 2em;
     max-width: 100%;
-    width: 80%;
-
+    border-bottom: 0.1em solid;
 
   }
+  
   p.dish {
     margin: .5em;
   }
 
-  .lifeUL{
-
-    margin-right: .5em;
-    margin-left: .5em;
-    margin-bottom: .5em;
-    margin-block-start: 0em;
+  .laif{
+    border-radius: 0px;
+    border-bottom-left-radius: .5em;
+    border-bottom-right-radius: .5em;
 
   }
-
+  
   .meal-title-lifestyle{
     color:rgb(66, 66, 66);
     font-size: 2em;
