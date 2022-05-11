@@ -1,6 +1,6 @@
 <template>
 
-  <h1>Diets</h1>
+  <h1>Diet</h1>
 
   <div class="day">
 
@@ -374,7 +374,7 @@ export default {
 	},
     methods: {
       editDish(dish_key) {
-        console.log("Edit Dish:" + dish_key);
+        console.log("Edit Dish!!:" + dish_key);
         const router = useRouter();
         //window.location.href = '/edit-meal?name=' + dish_key;
         //router.replace('/edit-meal?name=' + dish_key);
