@@ -9,7 +9,10 @@
 					</div>
 			</li>
 		</ul>
-	<router-link class="link" to="/create-dish"><i class="fas fa-plus" :class="{ active: $route.path=='/' }"></i></router-link>
+	<div class="add">
+		<router-link class="link" to="/create-dish"><i class="fas fa-plus" :class="{ active: $route.path=='/' }"></i></router-link>
+	</div>
+	
 
 </template>
 
@@ -142,7 +145,12 @@ button.fa-trash-alt {
 
 i.fas-fa-plus{
 
- margin-bottom: 2em;
+ margin-bottom: 1em;
 
 }
+
+.add{
+	 margin-bottom: 3em;
+}
+
 </style>

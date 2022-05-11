@@ -13,11 +13,10 @@
           </li>
       </ul>
   </div>
-
-
-<br><br>
-  <router-link class="moddieta" to="/modify-diet">Edit Diet</router-link>
-
+  <div class="editDiet">
+    <router-link class="moddieta" to="/modify-diet">Edit Diet</router-link>
+  </div>
+  
 </template>
 
 <script>
@@ -155,6 +154,10 @@ export default {
   margin-bottom: 2.5em;
   text-decoration: none;
   position: relative;
+}
+
+.editDiet{
+  margin-bottom: 3em;
 }
  
 
