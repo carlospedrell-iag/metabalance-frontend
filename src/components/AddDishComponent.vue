@@ -43,7 +43,9 @@ export default {
 
 		const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+
+		let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -51,7 +53,7 @@ export default {
 				
 			} else {
 				console.log("No data available");
-				this.dishList = ["no","noo"]
+				this.dishList = []
 			}
 		}).catch((error) => {
 			console.error(error);

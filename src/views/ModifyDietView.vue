@@ -1,6 +1,6 @@
 <template>
 
-  <h1>Diet</h1>
+  <h1>Diets</h1>
 
   <div class="day">
 
@@ -346,7 +346,8 @@ export default {
 
 		const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, `users/carlos/schedule`)).then((snapshot) => {
+    let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/schedule')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -358,7 +359,13 @@ export default {
 				
 			} else {
 				console.log("No data available");
-				this.schedule = []
+
+        let schedule = []
+
+        schedule = this.fixSchedule(schedule);
+        
+        this.schedule = schedule;
+
 			}
 		}).catch((error) => {
 			console.error(error);
@@ -369,7 +376,9 @@ export default {
       editDish(dish_key) {
         console.log("Edit Dish:" + dish_key);
         const router = useRouter();
-        router.replace('/edit-meal?name=' + dish_key);
+        //window.location.href = '/edit-meal?name=' + dish_key;
+        //router.replace('/edit-meal?name=' + dish_key);
+        this.$router.push({ path: '/edit-meal', query: { name: dish_key } });
       },
       
       fixSchedule(schedule){

@@ -24,9 +24,18 @@ export default {
     onBeforeMount(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (!user) {
+          console.log("No user")
           router.replace('/login');
-        } else if (route.path == '/login' || route.path == '/register'){
-          router.replace('/');
+        } else {
+
+          console.log("Logged in")
+          console.log(user)
+          console.log(user.email)
+          let userEmail  = user.email.replace('.', '');
+          sessionStorage.setItem('user', userEmail);
+          if (route.path == '/login' || route.path == '/register'){
+            router.replace('/');
+          }
         }
       });
     });

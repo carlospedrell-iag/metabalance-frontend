@@ -84,7 +84,8 @@ export default {
 
     const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, 'users/carlos/schedule/' + this.current_day + '/' + this.next_meal_title + '/dishes' )).then((snapshot) => {
+    let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/schedule/' + this.current_day + '/' + this.next_meal_title + '/dishes' )).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 

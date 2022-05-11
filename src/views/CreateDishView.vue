@@ -100,7 +100,8 @@ export default {
             console.log("Creating Dish, Name: " + this.dishName);
             
             const db = getDatabase();
-			fbPush(ref(db, 'users/carlos/dishes/'), {
+            let userEmail = sessionStorage.getItem('user');
+			fbPush(ref(db, 'users/' + userEmail + '/dishes/'), {
 				name: this.dishName,
 				total_calories: this.total_calories,
 				products: this.currentList

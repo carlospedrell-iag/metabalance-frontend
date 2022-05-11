@@ -52,7 +52,8 @@ export default {
 
 		const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+		let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -71,10 +72,11 @@ export default {
         deleteDish(dish_key) {
             console.log("Deleting, Dish key: " + dish_key);
 			const db = getDatabase();
-			remove(ref(db, 'users/carlos/dishes/' + dish_key));
+			let userEmail = sessionStorage.getItem('user');
+			remove(ref(db, 'users/' + userEmail + '/dishes/' + dish_key));
 
 			const dbRef = ref(db);
-			get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+			get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 				if (snapshot.exists()) {
 					console.log(snapshot.val());
 					this.productList = snapshot.val();
