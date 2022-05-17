@@ -9,8 +9,7 @@
     <div class="meal" @click="editDish('monday_breakfast')">
       <p class="meal-title">Breakfast</p>
       <ul>
-        <li class="laif" v-for="(dish) in schedule.monday.breakfast.dishes" :key="dish">
-          <img class="picture" src="@/assets/nutella.jpg">      
+        <li class="laif" v-for="(dish) in schedule.monday.breakfast.dishes" :key="dish">     
           <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
         </li>
       </ul>  
@@ -38,7 +37,6 @@
       <p class="meal-title">Dinner</p>
       <ul>
         <li class="laif" v-for="(dish) in schedule.monday.dinner.dishes" :key="dish">   
-          <img class="picture" src="@/assets/sopitaHabita.jpg"> 
           <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
         </li>
       </ul>
@@ -63,8 +61,7 @@
     <div class="meal" @click="editDish('tuesday_lunch')">    
       <p class="meal-title">Lunch</p>
       <ul>
-        <li class="laif" v-for="(dish) in schedule.tuesday.lunch.dishes" :key="dish">
-          <img class="picture" src="@/assets/sopitaHabita.jpg">       
+        <li class="laif" v-for="(dish) in schedule.tuesday.lunch.dishes" :key="dish">      
           <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
         </li>
       </ul>
