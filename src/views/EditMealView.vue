@@ -14,7 +14,7 @@
 
     <dish-list :list="currentList" :total_calories="total_calories"/>
     
-    <button @click="toggleAddDish" v-if="!showAddDish">+</button>
+    <button class="plus" @click="toggleAddDish" v-if="!showAddDish"><i class="fas fa-plus"></i></button>
     <add-dish-component v-if="showAddDish" @add-dish="onAddDish"/>
     <br><br><br>
 	<button class="setMeal" @click="setMeal()">Confirm</button>
@@ -178,5 +178,22 @@ export default {
 </script>
 
 <style>
+
+button.plus {
+    background: transparent;
+    border: none;
+}
+
+button.setMeal{
+    align-self: center;
+	background-color: #6AAE90;
+	border-radius: 0.4em;
+	color: white;
+	padding: 0.6em 1em;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+    border: none;
+}
 
 </style>

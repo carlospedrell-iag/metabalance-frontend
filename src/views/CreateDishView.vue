@@ -134,26 +134,27 @@ export default {
 
 button.createDish{
     align-self: center;
-	background-color: #558fc5;
-	border-radius: 3px;
+	background-color: #6AAE90;
+	border-radius: 0.4em;
 	color: white;
-	padding: 5px 10px;
+	padding: 0.6em 1em;
 	text-align: center;
 	display: inline-block;
 	font-size: 16px;
-	margin-left:2em;
+    border: none;
 }
 
 button.add-product{
     align-self: center;
-	background-color: #558fc5;
-	border-radius: 3px;
+	background-color: #6AAE90;
+	border-radius: 1px;
 	color: white;
-	padding: 5px 10px;
+	padding: 0.6em 1em;;
 	text-align: center;
 	display: inline-block;
 	font-size: 16px;
-	margin-left:2em;
+    border-radius: 0.4em;
+
 }
 
 .create-dish{
