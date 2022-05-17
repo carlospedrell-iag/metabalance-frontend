@@ -67,7 +67,7 @@ const user = firebase.auth().currentUser;
 
 console.log(user)
 
-let productList = ["AAS"];
+let productList = [];
 
 
 function loadProducts(){
@@ -75,9 +75,9 @@ function loadProducts(){
 	console.log("hoy")
 	const db = getDatabase();
 	const dbRef = ref(db);
-
+	let userEmail = sessionStorage.getItem('user');
 	return new Promise(
-		get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+		get(child(dbRef, 'users/' + userEmail + '/products')).then((snapshot) => {
 		if (snapshot.exists()) {
 
 			return snapshot.val();
@@ -95,7 +95,7 @@ function loadProducts(){
 export default {
 	data() {
 		return {
-			productList: ["A"]
+			productList: []
 		};
 	},
 	computed: {
@@ -108,7 +108,8 @@ export default {
 
 		const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+		let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/products')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -116,7 +117,7 @@ export default {
 				
 			} else {
 				console.log("No data available");
-				this.productList = ["no","noo"]
+				this.productList = []
 			}
 		}).catch((error) => {
 			console.error(error);
@@ -199,7 +200,8 @@ export default {
 			console.log(data['product']['image_front_url'])
 
 			const db = getDatabase();
-			fbPush(ref(db, 'users/carlos/products/'), product);
+			let userEmail = sessionStorage.getItem('user');
+			fbPush(ref(db, 'users/' + userEmail + '/products/'), product);
 
 			alert(product["name"] + " Added to your List!");
 			this.$forceUpdate();
@@ -209,10 +211,12 @@ export default {
 			console.log("Prod key: " + product_key);
 
 			const db = getDatabase();
-			remove(ref(db, 'users/carlos/products/' + product_key));
+			let userEmail = sessionStorage.getItem('user');
+			remove(ref(db, 'users/' + userEmail + '/products/' + product_key));
 
 			const dbRef = ref(db);
-			get(child(dbRef, `users/carlos/products`)).then((snapshot) => {
+			
+			get(child(dbRef, 'users/' + userEmail + '/products')).then((snapshot) => {
 				if (snapshot.exists()) {
 					console.log(snapshot.val());
 					this.productList = snapshot.val();
@@ -241,7 +245,8 @@ export default {
 
 
 			const db = getDatabase();
-			fbPush(ref(db, 'users/carlos/products/'), {
+			let userEmail = sessionStorage.getItem('user');
+			fbPush(ref(db, 'users/' + userEmail + '/products/'), {
 				name: productName.value,
 				calories: productCalories.value,
 				image: "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg"
@@ -253,12 +258,7 @@ export default {
 			console.log(productISBN.value);
 
 			getFoodAPI(productISBN.value);
-			/*
-			const db = getDatabase();
-			fbPush(ref(db, 'users/carlos/products/'), {
-				name: productName.value,
-				calories: productCalories.value
-			});*/
+
 
 		}
 

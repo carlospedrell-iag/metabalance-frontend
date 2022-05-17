@@ -73,7 +73,8 @@ export default {
 
         const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, 'users/carlos/schedule/' + this.day + '/' + this.meal + '/dishes')).then((snapshot) => {
+        let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/schedule/' + this.day + '/' + this.meal + '/dishes')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -87,7 +88,7 @@ export default {
 			console.error(error);
 		});
 
-        get(child(dbRef, 'users/carlos/dishes')).then((snapshot) => {
+        get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -125,7 +126,8 @@ export default {
             console.log("Setting Meal");
             
             const db = getDatabase();
-			fbUpdate(ref(db, 'users/carlos/schedule/' + this.day + '/' + this.meal ), {
+            let userEmail = sessionStorage.getItem('user');
+			fbUpdate(ref(db, 'users/' + userEmail + '/schedule/' + this.day + '/' + this.meal ), {
                 dishes: this.currentList
             });
             this.$router.push('modify-diet');     
@@ -134,10 +136,11 @@ export default {
         deleteDish(dish_key) {
             console.log("Deleting, Dish key: " + dish_key);
 			const db = getDatabase();
-			remove(ref(db, 'users/carlos/schedule/' + this.day + '/' + this.meal + '/dishes/' + dish_key ));
+            let userEmail = sessionStorage.getItem('user');
+			remove(ref(db, 'users/' + userEmail + '/schedule/' + this.day + '/' + this.meal + '/dishes/' + dish_key ));
 
 			const dbRef = ref(db);
-			get(child(dbRef, 'users/carlos/dishes')).then((snapshot) => {
+			get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
                 if (snapshot.exists()) {
                     console.log(snapshot.val());
 

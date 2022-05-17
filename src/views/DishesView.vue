@@ -9,7 +9,10 @@
 					</div>
 			</li>
 		</ul>
-	<router-link class="link" to="/create-dish"><i class="fas fa-plus" :class="{ active: $route.path=='/' }"></i></router-link>
+	<div class="add">
+		<router-link class="link" to="/create-dish"><i class="fas fa-plus" :class="{ active: $route.path=='/' }"></i></router-link>
+	</div>
+	
 
 </template>
 
@@ -49,7 +52,8 @@ export default {
 
 		const db = getDatabase();
 		const dbRef = ref(db);
-		get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+		let userEmail = sessionStorage.getItem('user');
+		get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log(snapshot.val());
 
@@ -68,10 +72,11 @@ export default {
         deleteDish(dish_key) {
             console.log("Deleting, Dish key: " + dish_key);
 			const db = getDatabase();
-			remove(ref(db, 'users/carlos/dishes/' + dish_key));
+			let userEmail = sessionStorage.getItem('user');
+			remove(ref(db, 'users/' + userEmail + '/dishes/' + dish_key));
 
 			const dbRef = ref(db);
-			get(child(dbRef, `users/carlos/dishes`)).then((snapshot) => {
+			get(child(dbRef, 'users/' + userEmail + '/dishes')).then((snapshot) => {
 				if (snapshot.exists()) {
 					console.log(snapshot.val());
 					this.productList = snapshot.val();
@@ -142,7 +147,12 @@ button.fa-trash-alt {
 
 i.fas-fa-plus{
 
- margin-bottom: 2em;
+ margin-bottom: 1em;
 
 }
+
+.add{
+	 margin-bottom: 3em;
+}
+
 </style>
