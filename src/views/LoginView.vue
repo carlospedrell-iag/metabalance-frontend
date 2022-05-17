@@ -60,7 +60,7 @@ div.login{
 input.login{
 
   position: relative;
-  background-color: #558fc5;
+  background-color: #6AAE90;
   border: none;
   padding: .9em 1.5em;
   margin-top: 1em;

@@ -20,7 +20,7 @@ export default {
 <style lang="scss">
 
 footer {
-    background: #47bff7;
+    background: #55CF96;
     z-index: 99;
     width: 100%;
     position: fixed;
@@ -44,6 +44,7 @@ nav {
 
 i.nav {
   color:white;
+  
 }
 i {
   font-size: 2em;
@@ -52,7 +53,7 @@ i {
 }
 
 i.active {
-  color:#156fb9;
+  color:#126A44;
 }
 
 </style>

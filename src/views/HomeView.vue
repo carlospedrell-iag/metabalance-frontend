@@ -52,7 +52,7 @@ export default {
 button.logout{
 
   position: relative;
-  background-color: #558fc5;
+  background-color: #6AAE90;
   border: none;
   padding: 15px 32px;
   margin-bottom: 2.5em;

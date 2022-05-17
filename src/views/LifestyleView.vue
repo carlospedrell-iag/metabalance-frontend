@@ -7,8 +7,7 @@
     <div class="current-day" style="text-transform:capitalize;">{{current_day}}</div>
     <div class="meal-title-lifestyle" style="text-transform:capitalize;">{{next_meal_title}}</div>
       <ul>
-          <li  class="laif" v-for="(dish) in next_meal" :key="dish">     
-            <img class="picture" src="@/assets/placeholder-square.jpg"> 
+          <li v-for="(dish) in next_meal" :key="dish">     
             <p class="dish" style="text-transform:capitalize;">{{dish.name}}</p>
           </li>
       </ul>
@@ -144,7 +143,7 @@ export default {
   }
 
 .moddieta{
-  background-color: #558fc5;
+  background-color: #6AAE90;
   border: none;
   padding: .5em 1em;
   border-radius: 8px;

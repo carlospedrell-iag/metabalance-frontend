@@ -86,15 +86,15 @@ export default {
 
 button.addProduct{
 	align-self: center;
-	background-color: #558fc5;
+	background-color: #6AAE90;
 	border-radius: 3px;
 	color: white;
 	padding: 5px 10px;
 	text-align: center;
 	display: inline-block;
 	font-size: 16px;
-	margin-left:2em;
-	margin-right:2em;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 </style>

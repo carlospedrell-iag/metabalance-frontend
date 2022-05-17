@@ -452,7 +452,7 @@ export default {
     margin-left: 2em;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #CCECF7;
+    background-color: #93D9B7;
     border-radius: 10px;
   }
 

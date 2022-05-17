@@ -21,7 +21,7 @@ header{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: #47bff7;
+    background: #55CF96;
     z-index: 99;
     width: 100%;
     position: fixed;
@@ -33,5 +33,6 @@ header{
 .header_logo {
     width: 3em;
     height: 3em;
+    
 }
 </style>

@@ -318,7 +318,7 @@ div.add-product{
 input.addProduct{
 
   position: relative;
-  background-color: #558fc5;
+  background-color: #6AAE90;
   border: none;
   padding: 16px 32px;
   border-radius: 8px;
@@ -337,7 +337,7 @@ li.product{
   border: 1px solid rgb(167, 167, 167);
   border-radius:10px;
   border-width: .1em;
-  background: #ffffff;
+  background: #ECEFF1;
 }
 div.product-info{
   flex:1;
@@ -369,7 +369,7 @@ img.food{
 
 button.fa-trash-alt {
     align-self: start;
-	background-color: #558fc5;
+	background-color: #6AAE90;
 	border-radius: 3px;
 	color: white;
 	padding: 5px 10px;
@@ -387,7 +387,7 @@ input[type="file"] {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-	background:#558fc5;
+	background:#6AAE90;
 	border-radius: 8px;
 	font-size: 12px;
   	color: white;
