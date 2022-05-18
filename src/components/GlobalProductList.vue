@@ -1,29 +1,40 @@
 <template>
 	<div class="product-form">
 		<div><h4>Add a new product</h4></div>
-		<div class="add-product">
-			<form @submit.prevent="addCustomProduct">
-				
-				<input type="text" placeholder="Name" v-model="productName"/>
-				<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
-				<input type="submit" class="addProduct" value="Add Product">
-			</form>
-		</div>
 
-		<label for="file-upload" class="custom-file-upload">
-			Upload File
-			<i class="fas fa-upload"></i>
-		</label>
-
-		<div class="add-product">
-			<form @submit.prevent="addProductByISBN">
-				
-				<input id="file-upload" type="file" @change="onFileChange">
-				<input type="text" placeholder="ISBN" v-model="productISBN"/>
-				<input type="submit" class="addProduct" value="Add Product by ISBN">
-			</form>
+		<div class="selector">
+			<div class="file-button selector-mode" @click="showMode('file')"  :class="{ active: FileModeVisible }"><p class="mode-title">Barcode</p></div>
+			<div class="custom-button selector-mode" @click="showMode('custom')" :class="{ active: CustomModeVisible }"><p class="mode-title">Custom</p></div>
+			<div class="isbn-button selector-mode" @click="showMode('isbn')" :class="{ active: ISBNModeVisible }"><p class="mode-title">ISBN</p></div>
 			
 		</div>
+
+		<div class="selector-container">
+			<div class="add-product" v-if="CustomModeVisible">
+				<form @submit.prevent="addCustomProduct">
+					
+					<input type="text" placeholder="Name" v-model="productName"/>
+					<input type="text" placeholder="Calories per 100g" v-model="productCalories" />
+					<input type="submit" class="addProduct" value="Add Product">
+				</form>
+			</div>
+
+			<label for="file-upload" class="custom-file-upload" v-if="FileModeVisible">
+				Upload File
+				<i class="fas fa-upload"></i>
+			</label>
+
+			<div class="add-product" v-if="ISBNModeVisible">
+				<form @submit.prevent="addProductByISBN">
+					
+					<input id="file-upload" type="file" @change="onFileChange">
+					<input type="text" placeholder="ISBN" v-model="productISBN"/>
+					<input type="submit" class="addProduct" value="Add Product by ISBN">
+				</form>	
+			</div>
+
+		</div>
+		
 		<div class="line"></div>
 	</div>
 
@@ -95,12 +106,34 @@ function loadProducts(){
 export default {
 	data() {
 		return {
-			productList: []
+			productList: [],
+			isCustomModeVisible: false,
+			isFileModeVisible: true,
+			isISBNModeVisible: false,
 		};
 	},
 	computed: {
 		myProductList: function () {
 			return  Object.assign({}, this.productList)
+		},
+
+		CustomModeVisible() {return this.isCustomModeVisible},
+		FileModeVisible() {return this.isFileModeVisible},
+		ISBNModeVisible() {return this.isISBNModeVisible},
+	},
+	methods: {
+
+		showMode(mode){
+			console.log("Showing mode: " + mode);
+
+			this.isFileModeVisible = false
+			this.isCustomModeVisible = false
+			this.isISBNModeVisible = false
+
+			if(mode == 'file') {this.isFileModeVisible = true}
+			if(mode == 'custom') {this.isCustomModeVisible = true}
+			if(mode == 'isbn') {this.isISBNModeVisible = true}
+
 		}
 	},
 	created() {
@@ -125,12 +158,15 @@ export default {
 
 
 
+
+
 		
 	},
 	setup() {
 		const productName = vueRef("");
 		const productCalories = vueRef("");
 		const productISBN = vueRef("");
+
 
 		function changeFile(e){
 			const name = e.target.name,
@@ -229,6 +265,8 @@ export default {
 			});
 
 		}
+
+
 
 		function onFileChange(e) {
 			console.log(e.target.files[0]);
@@ -393,5 +431,37 @@ input[type="file"] {
   	color: white;
 }
 
+div.selector{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-radius: 9px;
 
+}
+
+div.selector-mode{
+
+	background:#c1e6d6;
+	border-radius: 9px;
+	padding: .5em 1em .5em 1em;
+
+}
+
+div.selector-container{
+
+	background:#e9e9e9;
+	border-radius: 9px;
+	padding: 2em;
+	height: 10em;
+	margin-top: 1em;
+}
+
+div.selector-mode.active{
+	background:#70b497;
+}
+
+
+p.mode-title{
+	margin: auto;
+}
 </style>
