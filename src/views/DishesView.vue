@@ -80,7 +80,7 @@ export default {
 				if (snapshot.exists()) {
 					console.log(snapshot.val());
 					this.productList = snapshot.val();
-					window.location.reload();
+					
 				} else {
 					console.log("No data available");
 					this.productList = []
@@ -88,6 +88,8 @@ export default {
 			}).catch((error) => {
 				console.error(error);
 			});
+
+			window.location.reload();
         }
     },
 

@@ -241,6 +241,7 @@ export default {
 
 			alert(product["name"] + " Added to your List!");
 			this.$forceUpdate();
+			window.location.reload();
 		}
 
 		function deleteProduct(product_key){
@@ -263,6 +264,8 @@ export default {
 			}).catch((error) => {
 				console.error(error);
 			});
+
+			window.location.reload();
 
 		}
 
@@ -289,6 +292,8 @@ export default {
 				calories: productCalories.value,
 				image: "https://www.kurin.com/wp-content/uploads/placeholder-square.jpg"
 			});
+
+			window.location.reload();
 
 		}
 
@@ -421,9 +426,8 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-	border: 1px solid #ccc;
     display: inline-block;
-    padding: 6px 12px;
+    padding: 1em;
     cursor: pointer;
 	background:#6AAE90;
 	border-radius: 8px;
