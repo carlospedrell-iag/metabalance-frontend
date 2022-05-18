@@ -27,7 +27,7 @@ footer {
     bottom: 0;
     height: 4em;
     color: white;
-    padding-bottom: 1em;
+    padding-bottom: 1.6em;
 }
 
 nav {

@@ -20,6 +20,7 @@
 			</div>
 
 			<label for="file-upload" class="custom-file-upload" v-if="FileModeVisible">
+				<input id="file-upload" type="file" @change="onFileChange">
 				Upload File
 				<i class="fas fa-upload"></i>
 			</label>
@@ -27,7 +28,7 @@
 			<div class="add-product" v-if="ISBNModeVisible">
 				<form @submit.prevent="addProductByISBN">
 					
-					<input id="file-upload" type="file" @change="onFileChange">
+					
 					<input type="text" placeholder="ISBN" v-model="productISBN"/>
 					<input type="submit" class="addProduct" value="Add Product by ISBN">
 				</form>	
@@ -275,7 +276,14 @@ export default {
 			console.log(e.target.files[0]);
 			let image_file = URL.createObjectURL(e.target.files[0]);
 			console.log(image_file);
-			extractBarcode(image_file);
+			try{
+				console.log("Trying")
+				extractBarcode(image_file);
+			}
+			catch(err){
+				alert(err)
+			}
+			
 
 			
 		}
