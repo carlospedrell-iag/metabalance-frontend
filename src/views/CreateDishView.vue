@@ -12,6 +12,8 @@
             <button class="add-product" @click="toggleAddProduct" v-if="!showAddProduct">Add Product</button>
             <add-product-component v-if="showAddProduct" @add-product="onAddProduct"/>
             
+            <div class="line"></div>
+
             <product-list :list="currentList" :total_calories="total_calories"/>
 
             <button class="createDish" @click="createDish()">Create Dish</button>

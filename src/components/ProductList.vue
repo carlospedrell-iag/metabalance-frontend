@@ -40,13 +40,14 @@ export default {
 <style>
 button.fa-trash-alt{
     align-self: center;
-	background-color: #558fc5;
+	background-color: #6AAE90;
+	border: 0;
+	border-bottom: solid .2em #467561;
 	border-radius: 3px;
 	color: white;
 	padding: 5px 10px;
 	text-align: center;
 	display: inline-block;
 	font-size: 16px;
-	margin-left:2em;
 }
 </style>

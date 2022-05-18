@@ -5,6 +5,7 @@
 
 
   <global-product-list/>
+  <p class="signed-in-as">Signed in as {{ userEmail }}</p>
   <button class="logout" @click="Logout">Logout</button>
 </template>
 
@@ -17,6 +18,14 @@ import firebase from 'firebase/compat/app';
 import GlobalProductList from '../components/GlobalProductList.vue';
 
 export default {
+  data() {
+		return {
+			userEmail: ''
+		};
+	},
+  created() {
+    this.userEmail  = sessionStorage.getItem('user');
+  },
   setup() {
 
     const name = ref("");
@@ -61,6 +70,10 @@ button.logout{
   color: white;
   top: 0;
 
+}
+
+p.signed-in-as {
+  color: gray;
 }
 
 </style>
