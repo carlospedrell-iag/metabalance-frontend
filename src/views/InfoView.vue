@@ -1,18 +1,18 @@
 <template>
-  <h1>Info</h1>
+  <h1>Information</h1>
 
   <router-link to="/Information"> 
     <div class="info">
-    <h3 class="infoTitle">6 consells per tenir una alimentació més saludable</h3>
+    <h3 class="infoTitle">Six tips for a healthier diet</h3>
     <img class="dish" src="@/assets/healthy.jpg"> 
     </div> 
   </router-link>
 
-  <h1>Receptes</h1>
+  <h1>Recipes</h1>
 
   <router-link to="/recipe">
     <div class="receptes" >
-    <h3 class="dishTitle">Arròs integral amb verdures</h3>
+    <h3 class="dishTitle">Whole grain rice with vegetables</h3>
     <img class="dish" src="@/assets/arros.jpg">
     </div>
    </router-link>

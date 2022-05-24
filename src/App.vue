@@ -76,7 +76,7 @@ div.app{
     height:100%;
   background: white;
   padding-top: 4em;
-  padding-bottom: 4em;
+  padding-bottom: 6em;
 }
 
 /* Style inputs */
